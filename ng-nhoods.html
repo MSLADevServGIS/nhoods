@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html ng-app="app" lang="en">
+  <head ng-controller="mainCtrl">
+    <title>Neighborhood Atlas (testing)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--Main CSS-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+
+    <!--Angular-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+
+    <!--Leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js" defer></script>
+    
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" defer></script>
+
+    <!--Angular-Leaflet-Directive-->
+    <!--PRODUCTION<script src="https://cdn.rawgit.com/tombatossals/angular-leaflet-directive/master/dist/angular-leaflet-directive.min.js"></script>-->
+    <script src="https://rawgit.com/tombatossals/angular-leaflet-directive/master/dist/angular-leaflet-directive.min.js"></script>
+
+    <!-- App & Controllers -->
+    <script src="app.js" defer></script>
+    <script src="ctrl.js" defer></script>
+    <!--<script src="js/controllers.js" defer></script>-->
+
+
+  </head>
+
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "PT Sans", sans-serif}
+</style>
+
+
+<body ng-controller="mainCtrl">
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-theme-d5 w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-theme-d3">Office of Neighborhoods</a>
+    <a href="#/" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+    <a href="#/about" class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
+    <a href="#/contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+    <a href="#/help" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Help</a>
+        
+  </div>
+</div>
+
+
+<!-- Left Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" style="z-index:3;width:250px;margin-top:43px;" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <h4 class="w3-bar-item"><b>Neighborhoods</b></h4>
+  <!-- ng-list -->
+  <a href="#/cjm" class="w3-bar-item w3-button w3-hover-black">Captain John Mullan</a>
+  <a href="#/" class="w3-bar-item w3-button w3-hover-black">East Missoula</a>
+  <a href="#/" class="w3-bar-item w3-button w3-hover-black">Farviews / Pattee Canyon</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#">etc</a>
+</nav>
+
+
+<!-- Right Sidebar -->
+<span ng-include ng-if="showAssets == true" src="'partials/rsidebar.html'"></span>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+<!-- Main body -->
+<div class="w3-main" style="margin-left:250px;margin-right:250px;">
+
+  <!-- Load respective content from views -->
+  <div class="w3-row w3-padding-64">
+    <span ng-view></span>
+  </div>
+
+
+  <!-- Footer -->
+  <footer id="myFooter" class="w3-bottom">
+    <!--<div class="w3-container w3-theme-d3 w3-padding-32">
+      <h4>Footer</h4>
+    </div>-->
+
+    <div class="w3-container w3-theme-d5 w3-right-align" style="margin-right:250px;">
+      <p>Updated: {{date}}</p>
+      <p>Built with:
+        <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>,
+        <a href="https://angularjs.org/" target="_blank">AngularJS</a>,
+        <a href="http://leafletjs.com/" target="_blank">LeafletJS</a>      
+      </p>
+    </div>
+  </footer>
+</div>
+
+<!-- END MAIN -->
+
+
+<script>
+
+
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Dropdown and Accordion Color (highlighted)
+var color_HL = " w3-theme-d2";
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+    if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+    } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+    }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+    overlayBg.style.display = "none";
+}
+
+// Opens Accordions
+function openAccordion(accordion) {
+    var x = document.getElementById(accordion);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += color_HL;
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(color_HL, "");
+    }
+}
+
+// Opens Dropdowns
+function openDropdown(dd) {
+    var x = document.getElementById(dd);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += color_HL;
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(color_HL, "");
+    }
+}
+
+</script>
+
+</body>
+
+<!-- Adapted from W3's Webpage Template found at
+  https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_webpage&stacked=h
+-->
+
+</html>
