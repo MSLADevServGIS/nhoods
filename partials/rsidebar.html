@@ -1,54 +1,57 @@
+
+
 <!-- Right Sidebar -->
+<!--
 <div class="w3-sidebar w3-bar-block w3-light-grey w3-card-2 w3-top w3-collapse" style="z-index:2; right:0; width:15%; margin-top:43px;">
   <h2 class="w3-bar-item">Assets</h2>
-
+-->
+<div class="w3-card w3-block" style="width=100%;">
   <!-- Parks & Open Space Accordion -->
-  <div class="w3-bar-item w3-button" onclick="openAccordion('acc_parks')">Parks & Open Space <i class="fa fa-caret-down"></i></div>
+  <div class="w3-block w3-button" onclick="openAccordion('acc_parks')">Parks & Open Space <i class="fa fa-caret-down"></i></div>
   <div id="acc_parks" class="w3-hide w3-white w3-card-4">
-    <a href="#" class="w3-bar-item w3-button">Link</a>
-    <a href="#" class="w3-bar-item w3-button">Link</a>
+    <span class="w3-block w3-center">Item1</span>
+    <span class="w3-block w3-center">Item2</span>
   </div>
   
   <!-- Public Facilities Accordion -->
-  <div class="w3-bar-item w3-button" onclick="openAccordion('acc_pub_facilites')">Public Facilities <i class="fa fa-caret-down"></i></div>
+  <div class="w3-block w3-button" onclick="openAccordion('acc_pub_facilites')">Public Facilities <i class="fa fa-caret-down"></i></div>
   <div id="acc_pub_facilites" class="w3-hide w3-white w3-card-4">
-    <a href="#" class="w3-bar-item w3-button">Link</a>
-    <a href="#" class="w3-bar-item w3-button">Link</a>
+    <span class="w3-block w3-center">Item1</span>
+    <span class="w3-block w3-center">Item2</span>
   </div>
   
   <!-- Schools Accordion -->
-  <div class="w3-bar-item w3-button" onclick="openAccordion('acc_schools')">Schools <i class="fa fa-caret-down"></i></div>
+  <div class="w3-block w3-button" onclick="openAccordion('acc_schools')">Schools <i class="fa fa-caret-down"></i></div>
   <div id="acc_schools" class="w3-hide w3-white w3-card-4">
-    <a href="#" class="w3-bar-item w3-button">Link</a>
-    <a href="#" class="w3-bar-item w3-button">Link</a>
+    <span class="w3-block w3-center">Item1</span>
+    <span class="w3-block w3-center">Item2</span>
   </div>
   
   <!-- Grocery Stores Accordion -->
-  <div class="w3-bar-item w3-button" onclick="openAccordion('acc_gstores')">Grocery Stores <i class="fa fa-caret-down"></i></div>
+  <div class="w3-block w3-button" onclick="openAccordion('acc_gstores')">Grocery Stores <i class="fa fa-caret-down"></i></div>
   <div id="acc_gstores" class="w3-hide w3-white w3-card-4">
-    <a href="#" class="w3-bar-item w3-button">Link</a>
-    <a href="#" class="w3-bar-item w3-button">Link</a>
+    <span ng-repeat="gs in asset_gstores" class="w3-block w3-center">{{gs}}</span>
   </div>
   
   <!-- Historic Structures Accordion -->
-  <div class="w3-bar-item w3-button" onclick="openAccordion('acc_hist')">Historic Structures <i class="fa fa-caret-down"></i></div>
+  <div class="w3-block w3-button" onclick="openAccordion('acc_hist')">Historic Structures <i class="fa fa-caret-down"></i></div>
   <div id="acc_hist" class="w3-hide w3-white w3-card-4">
-    <a href="#" class="w3-bar-item w3-button">Link</a>
-    <a href="#" class="w3-bar-item w3-button">Link</a>
+    <span class="w3-block w3-center">Item1</span>
+    <span class="w3-block w3-center">Item2</span>
   </div>
   
   <!-- New Development Accordion -->
-  <div class="w3-bar-item w3-button" onclick="openAccordion('acc_new_dev')">New Development <i class="fa fa-caret-down"></i></div>
+  <div class="w3-block w3-button" onclick="openAccordion('acc_new_dev')">New Development <i class="fa fa-caret-down"></i></div>
   <div id="acc_new_dev" class="w3-hide w3-white w3-card-4">
-    <a href="#" class="w3-bar-item w3-button">Link</a>
-    <a href="#" class="w3-bar-item w3-button">Link</a>
+    <span class="w3-block w3-center">Item1</span>
+    <span class="w3-block w3-center">Item2</span>
   </div>
   
   <!-- Planning Docs Accordion -->
-  <div class="w3-bar-item w3-button" onclick="openAccordion('acc_plan_docs')">Planning Documents <i class="fa fa-caret-down"></i></div>
+  <div class="w3-block w3-button" onclick="openAccordion('acc_plan_docs')">Planning Documents <i class="fa fa-caret-down"></i></div>
   <div id="acc_plan_docs" class="w3-hide w3-white w3-card-4">
-    <a href="#" class="w3-bar-item w3-button">Link</a>
-    <a href="#" class="w3-bar-item w3-button">Link</a>
+    <span class="w3-block w3-center">Item1</span>
+    <span class="w3-block w3-center">Item2</span>
   </div>
 
   

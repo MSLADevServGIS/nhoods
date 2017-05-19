@@ -4,7 +4,6 @@
 
 app.controller("nhoodCtrl", ["$scope", function($scope) {
     $scope.pageTitle = "{{nhood_name}}";
-    $scope.showAssets = true;
     
     // Nhood-specific values
     $scope.nhood = "{{nhood_name}}";

@@ -1,6 +1,5 @@
 app.controller("mainCtrl", ["$scope", function($scope) {
     $scope.pageTitle = "Neighborhood Atlas";
-    $scope.showAssets = false;
     
     // Misc info
 	$scope.date = new Date().toLocaleDateString();
