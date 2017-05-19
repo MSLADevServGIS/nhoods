@@ -34,7 +34,7 @@
     <!-- App & Controllers -->
     <script src="app.js" defer></script>
     <script src="ctrl.js" defer></script>
-    <!--<script src="js/controllers.js" defer></script>-->
+    <script src="controllers/testCtrl.js" defer></script>
 
 
   </head>
@@ -61,21 +61,21 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "PT Sans", sans-serif}
 
 
 <!-- Left Sidebar -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" style="z-index:3;width:250px;margin-top:43px;" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" style="z-index:3; width: 170px; margin-top: 43px;" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
     <i class="fa fa-remove"></i>
   </a>
   <h4 class="w3-bar-item"><b>Neighborhoods</b></h4>
   <!-- ng-list -->
-  <a href="#/cjm" class="w3-bar-item w3-button w3-hover-black">Captain John Mullan</a>
-  <a href="#/" class="w3-bar-item w3-button w3-hover-black">East Missoula</a>
-  <a href="#/" class="w3-bar-item w3-button w3-hover-black">Farviews / Pattee Canyon</a>
+  <a href="#/nhood" class="w3-bar-item w3-button w3-hover-black">Captain John Mullan</a>
+  <a href="#/em" class="w3-bar-item w3-button w3-hover-black">East Missoula</a>
+  <a href="#/fpc" class="w3-bar-item w3-button w3-hover-black">Farviews / Pattee Canyon</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="#">etc</a>
 </nav>
 
 
 <!-- Right Sidebar -->
-<span ng-include ng-if="showAssets == true" src="'partials/rsidebar.html'"></span>
+
 
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -83,23 +83,24 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "PT Sans", sans-serif}
 
 
 <!-- Main body -->
-<div class="w3-main" style="margin-left:250px;margin-right:250px;">
+<div class="w3-main" style="margin-left: 170px;">
 
   <!-- Load respective content from views -->
   <div class="w3-row w3-padding-64">
     <span ng-view></span>
   </div>
-
+</div>
 
   <!-- Footer -->
-  <footer id="myFooter" class="w3-bottom">
+<div>
+  <footer id="myFooter" class="w3-bottom w3-rest">
     <!--<div class="w3-container w3-theme-d3 w3-padding-32">
       <h4>Footer</h4>
     </div>-->
 
-    <div class="w3-container w3-theme-d5 w3-right-align" style="margin-right:250px;">
-      <p>Updated: {{date}}</p>
-      <p>Built with:
+    <div class="w3-container w3-theme-d5 w3-right-align">
+      <!--<p>Updated: {{date}}</p>-->
+      <p id="credits">Built with:
         <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>,
         <a href="https://angularjs.org/" target="_blank">AngularJS</a>,
         <a href="http://leafletjs.com/" target="_blank">LeafletJS</a>      
@@ -133,6 +134,7 @@ function w3_open() {
         overlayBg.style.display = "block";
     }
 }
+
 
 // Close the sidebar with the close button
 function w3_close() {

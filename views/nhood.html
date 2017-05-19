@@ -1,5 +1,18 @@
-<div class="w3-container">
-  <h1 class="w3-text-teal">Captian John Mullan</h1>
+
+
+<div class="w3-container" ng-controller="cjmCtrl">
+  <h1 class="w3-text-teal">{{pageTitle}}</h1>
   <p>CONTENT</p>
 
+</div>
+
+
+<div ng-controller="cjmCtrl" class="w3-sidebar w3-bar-block w3-animate-right" style="margin-top:2px;">
+  <span ng-include ng-if="showAssets == true" src="'partials/rsidebar.html'"></span>
+</div>
+
+
+<div class="w3-onequarter w3-block w3-top" style="right:0;">
+  <span ng-include src="'partials/map.html'"
+<!--<leaflet lf-center="map_extent" width="100%" height="400px"></leaflet> <!--tiles="tiles" geojson="map_data"-->
 </div>

@@ -25,6 +25,11 @@ app.config(function($routeProvider) {
 		templateUrl: 'views/404.html',
 		controller: 'mainCtrl'
 	});
+	
+	$routeProvider.when("/nhood", {
+		templateUrl: 'views/nhood.html',
+		controller: 'mainCtrl'
+	});
     /*
 	$routeProvider.when("/:nhood", {
 		templateUrl: 'views/nhood.html',
