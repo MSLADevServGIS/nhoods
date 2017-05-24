@@ -26,4 +26,37 @@ app.controller("nhoodCtrl", ["$scope", function($scope) {
     $scope.asset_new_dev = "";
     $scope.asset_plan_docs = "";
     
+    // Map Controller Variables
+    $scope.json_bounds = "{{json_bounds}}";
+    $scope.map_extent = {
+		lat: {{lat}},
+		lng: {{lng}},
+		zoom: {{zoom}}
+	};
+	
+	// Map tile/basemaps
+	var tilesDict = {
+		openstreetmap: {
+			name: "Open Street Map",
+			url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+			options: {
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			}
+		},
+		opencyclemap: {
+			name: "Open Cycle Map",
+			url: "http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
+			options: {
+				attribution: 'All maps &copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, map data &copy; <a href="http://www.openstreetmap.org">OpenStreetMap</a> (<a href="http://www.openstreetmap.org/copyright">ODbL</a>'
+			}
+		}
+	};
+	
+	// Pass tiles dict to $scope
+	$scope.tiles = tilesDict.openstreetmap;
+
+	// Change tiles function
+	$scope.changeTiles = function(tiles) {
+		$scope.tiles = tilesDict[tiles];
+	};
 }]);
