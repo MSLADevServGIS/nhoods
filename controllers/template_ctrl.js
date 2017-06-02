@@ -9,7 +9,7 @@ app.controller("nhoodCtrl", ["$scope", function($scope) {
     $scope.nhood = "{{nhood_name}}";
     $scope.desc = "{{desc}}";
     $scope.creation_date = "{{creation_date}}";
-    $scope.size = "{{size}}";
+    $scope.size = "{{size_acres}}";
     $scope.wards = "{{wards}}";
     $scope.census_pop = "{{census_pop}}";
     $scope.est_pop = "{{est_pop}}";
@@ -27,11 +27,11 @@ app.controller("nhoodCtrl", ["$scope", function($scope) {
     $scope.asset_plan_docs = "";
     
     // Map Controller Variables
-    $scope.json_bounds = "{{json_bounds}}";
+    $scope.json_bounds = {{json_bounds}};
     $scope.map_extent = {
 		lat: {{lat}},
 		lng: {{lng}},
-		zoom: {{zoom}}
+		zoom: {{zoom_level}}
 	};
 	
 	// Map tile/basemaps
