@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html ng-app="app" lang="en">
-  <head ng-controller="mainCtrl">
+  <head>
     <title>Neighborhood Atlas (testing)</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,8 +33,9 @@
 
     <!-- App & Controllers -->
     <script src="app.js" defer></script>
-    <script src="ctrl.js" defer></script>
-    <script src="controllers/testCtrl.js" defer></script>
+    <!--<script src="ctrl.js" defer></script>-->
+    <!--<script src="controllers/testCtrl.js" defer></script>-->
+    <script src="nhoodCtrl.js" defer></script>
 
 
   </head>
@@ -66,11 +67,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "PT Sans", sans-serif}
     <i class="fa fa-remove"></i>
   </a>
   <h4 class="w3-bar-item"><b>Neighborhoods</b></h4>
-  <!-- ng-list -->
-  <a href="#/nhood" class="w3-bar-item w3-button w3-hover-black">Captain John Mullan</a>
-  <a href="#/em" class="w3-bar-item w3-button w3-hover-black">East Missoula</a>
-  <a href="#/fpc" class="w3-bar-item w3-button w3-hover-black">Farviews / Pattee Canyon</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#">etc</a>
+  <!-- List all Nhoods (from all_nhoods var in mainCtrl) -->
+  <span ng-repeat="n in all_nhoods" class="w3-block w3-center">
+    <a ng-href="{{n | makeUrl}}" class="w3-bar-item w3-button w3-hover-black">{{n}}</a>
+  </span>
 </nav>
 
 
