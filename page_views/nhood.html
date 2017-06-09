@@ -2,30 +2,93 @@
 This page contains the layout for displaying every nhood controller's data.
 -->
 
-<div class="w3-container" style="margin-right: 15%">
-  <h1 class="w3-text-teal">{{pageTitle}}</h1>
-  <p>{{desc}}</p>
+<!-- Map (large screens)
+<div class="w3-col s12 m8 l4 w3-hide-small w3-hide-medium w3-container w3-card-4 w3-padding-16 w3-white"
+  style="position: fixed; right:100px; height:650px; margin-top:10px; margin-left:10px;">
+  <div></div>
+    <leaflet center="map_extent" width="600px" height="550px" tiles="tiles" geojson="map_data"></leaflet>
+  </div>
+</div> ----------------------->
+
+
+<div class="w3-container" ">
+
+  <!-- Card for Title and Map ------------------------->
+  <div class="w3-col s12 m12 l9 w3-container w3-card-4 w3-padding-16" style="margin-right:0px; margin-top:10px;">
+    <!-- Title ---------------------------------------->
+    <div class="w3-container w3-col s12 m12 l4 w3-white">
+      <h1 class="w3-text-teal">{{pageTitle}}</h1>
+      <p>Established: {{creation_date}}</p>
+      <p>{{desc}}</p>
+      <p>Size: {{size}} Acres</p>
+      <br>
+      <!-- Metrics (large) ---------------------------->
+      <span id="metricsLarge" class="w3-hide-small w3-hide-medium" ng-include src="'partials/metrics.html'"></span>
+    </div>
+    
+    <!-- Map (large) ---------------------------------->
+    <div class="w3-col s12 m8 l7 w3-hide-small w3-hide-medium w3-container w3-padding-16 w3-right w3-theme-d3"
+      style="position: relative; z-index:0;">
+      <leaflet center="map_extent" width="100%" height="550px" tiles="tiles" geojson="map_data"></leaflet>
+    </div>
+  <!-- End of first card -->
+  </div>
+
+  
+  <!-- Assets (large) --------------------------------->
+  <div id="assetsLarge" class="w3-col l3 w3-card-4 w3-white w3-right w3-hide-small w3-hide-medium"
+    style="padding-right:10px; padding-left:10px; margin-top:10px;">
+      <span ng-include src="'partials/assetsLg.html'"></span>
+  </div>
+  
+  
+  
+  
+  
+  <!-- Map (small & medium screens) ------------------->
+  <div class="w3-col s12 w3-hide-large w3-container w3-card-4 w3-padding-16" style="margin-top:10px;">
+    <div style="position: relative; z-index:0;">
+      <leaflet center="map_extent" width="100%" height="350px" tiles="tiles" geojson="map_data"></leaflet>
+    </div>
+  </div>
+
+  <!-- Split Metrics & Assets on large screens -->
+  <div class="w3-col s12 m12 l12 w3-container" style="padding: 0px;">
+
+    <!-- Metrics -------------------------------------->
+    <div class="w3-col m6 l6 w3-card-4 w3-light-gray w3-hide-large"
+      style="padding-right:10px; padding-left:10px; margin-top:10px;">
+      <span ng-include src="'partials/metrics.html'"></span>
+    </div>
+
+    <!-- Assets (small) ------------------------------->
+    <div class="w3-col m6 l5 w3-card-4 w3-white w3-right w3-hide-large"
+      style="padding-right:10px; padding-left:10px; margin-top:10px;">
+        <span ng-include src="'partials/assets.html'"></span>
+    </div>
+
+    
+    <!-- Misc Links 
+    <a href="https://missoula.buildingeye.com/building" class="w3-bar-item w3-button">Building Eye</a>
+    <a href="#" class="w3-bar-item w3-button">Link 3</a>-->
+  </div>
+
+
 </div>
 
-<!-- TODO: could we have the map in the right col of row 1? -->
 
-<!-- Map Row -->
-<div class="w3-row w3-padding-16" style="position: relative; z-index:0;">
-  <div class="w3-col w3-card-4 w3-center s12 m12 l12">
-    <span>
-      <leaflet center="map_extent" width="100%" height="500px" tiles="tiles" geojson="map_data"></leaflet>
-    </span>
-  </div>
-</div>
 
-<!-- Data Row -->
-<div class="w3-row w3-padding-16">
-  <!-- Data container (left) -->
-  <div class="w3-col w3-container s12 m8 l8 w3-yellow">
-    <p>This part will occupy 12 columns on a small screen, 4 on a medium screen, and 3 on a large screen.</p>
-  </div>
-  <!-- Assets Card (right) -->
-  <div class="w3-col w3-container s12 m4 l4">
-    <span ng-include src="'partials/rsidebar.html'"></span>
-  </div>
-</div>
+<script>
+// Get height of row
+var mapHeight = function() {
+  var mapRow = document.getElementById("mapRow");
+  var h = mapRow.style.height;
+  var map = document.getElementById("map");
+  map.style.height = h;
+  };
+  
+mapHeight();
+
+
+</script>
+

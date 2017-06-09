@@ -48,42 +48,31 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "PT Sans", sans-serif}
 <body ng-controller="mainCtrl">
 
 <!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-theme-d5 w3-top w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-theme-d3">Office of Neighborhoods</a>
-    <a href="#/" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
-    <a href="#/about" class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
-    <a href="#/contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
-    <a href="#/help" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Help</a>
-        
+<div class="w3-top w3-mobile">
+  <div class="w3-bar w3-theme-d5 w3-mobile w3-top w3-left-align w3-large">
+    <button class="w3-bar-item w3-button w3-theme- w3-hover-white" onclick="w3_open()">☰ Neighborhoods</button>
+    <a href="#/" class="w3-bar-item w3-button w3-hover-white">Home</a>
   </div>
 </div>
 
 
-<!-- Left Sidebar -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left w3-top" style="position: relative; z-index: 5; width: 170px; margin-top: 43px;" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
-    <i class="fa fa-remove"></i>
-  </a>
-  <h4 class="w3-bar-item"><b>Neighborhoods</b></h4>
-  <!-- List all Nhoods (from all_nhoods var in mainCtrl) -->
+<!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-animate-left w3-cell" style="display:none; z-index:99;" id="sidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large w3-right-align">Close &times;</button>
   <span ng-repeat="n in all_nhoods" class="w3-block w3-center">
-    <a ng-href="{{n | makeUrl}}" class="w3-bar-item w3-button w3-hover-black">{{n}}</a>
-  </span>
-</nav>
-
-
-<!-- Right Sidebar -->
-
-
+    <!-- Use the filter to make URLs -->
+    <a ng-href="{{n | makeUrl}}" class="w3-bar-item w3-button w3-hover-black" onclick="w3_close()">{{n}}</a>
+</div>
 
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-overlay" onclick="w3_close()" style="cursor:pointer;"
+  title="close side menu" id="myOverlay">
+</div>
+
 
 
 <!-- Main body -->
-<div class="w3-main" style="margin-left: 170px; margin-bottom: 42px;">
+<div class="w3-main" style="margin-bottom: 42px;">
 
   <!-- Load respective content from views -->
   <div class="w3-row w3-padding-64">
@@ -91,9 +80,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "PT Sans", sans-serif}
   </div>
 </div>
 
+
+
   <!-- Footer -->
-<div>
-  <footer id="myFooter" class="w3-row w3-bottom w3-rest">
+<div class="w3-animate-bottom" id="footer" >
+  <footer class="w3-row w3-bottom w3-rest">
     <!--<div class="w3-container w3-theme-d3 w3-padding-32">
       <h4>Footer</h4>
     </div>-->
@@ -113,10 +104,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "PT Sans", sans-serif}
 
 
 <script>
-
-
 // Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
+var sidebar = document.getElementById("sidebar");
 
 // Get the DIV with overlay effect
 var overlayBg = document.getElementById("myOverlay");
@@ -126,21 +115,21 @@ var color_HL = " w3-theme-d2";
 
 // Toggle between showing and hiding the sidebar, and add overlay effect
 function w3_open() {
-    if (mySidebar.style.display === 'block') {
-        mySidebar.style.display = 'none';
-        overlayBg.style.display = "none";
+    if (sidebar.style.display === 'block') {
+        sidebar.style.display = 'none';
+        //overlayBg.style.display = "none";
     } else {
-        mySidebar.style.display = 'block';
+        sidebar.style.display = 'block';
         overlayBg.style.display = "block";
     }
-}
+};
 
 
 // Close the sidebar with the close button
 function w3_close() {
-    mySidebar.style.display = "none";
+    sidebar.style.display = "none";
     overlayBg.style.display = "none";
-}
+};
 
 // Opens Accordions
 function openAccordion(accordion) {
@@ -167,6 +156,27 @@ function openDropdown(dd) {
         x.previousElementSibling.className.replace(color_HL, "");
     }
 }
+
+
+// Hide footer & remove large assets on mobile
+var foot = document.getElementById("footer");
+var isMobile = false;
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+  isMobile = true;
+  foot.style.display = "none";
+}
+
+
+
+document.onscroll = function() {
+  if (window.innerHeight + window.scrollY > document.body.clientHeight) {
+    document.getElementById('footer').style.display='block';
+    }
+  else {
+    document.getElementById('footer').style.display='none';
+    }
+};
+
 
 </script>
 

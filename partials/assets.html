@@ -1,0 +1,82 @@
+
+<!-- Assets (small & medium) Accordion
+Use this for small and medium device screen sizes.
+-->
+
+<!-- Header class="w3-theme-d1"-->
+<header class="w3-theme-d2" style="padding-left:10px;">
+  <h1>Assets</h1>
+</header>
+
+<!-- Wards -->
+<div class="w3-block w3-button" onclick="openAccordion('wards')">
+  <h5>Wards & Representitives <i class="fa fa-caret-down"></i></h5>
+</div>
+<div id="wards" class="w3-hide w3-white w3-card-4" style="margin-bottom:10px;">
+  <span ng-repeat="w in wards" class="w3-block w3-center">{{w}}</span>
+</div>
+
+<!-- Parks & Open Space Accordion -->
+<div class="w3-block w3-button" onclick="openAccordion('acc_parks')">
+  <h5>Parks & Open Space <i class="fa fa-caret-down"></i></h5>
+</div>
+<div id="acc_parks" class="w3-hide w3-white w3-card-4" style="margin-bottom:10px;">
+  <span class="w3-block w3-center">Item1</span>
+  <span class="w3-block w3-center">Item2</span>
+</div>
+
+<!-- Public Facilities Accordion -->
+<div class="w3-block w3-button" onclick="openAccordion('acc_pub_facilites')">
+  <h5>Public Facilities <i class="fa fa-caret-down"></i></h5>
+</div>
+<div id="acc_pub_facilites" class="w3-hide w3-white w3-card-4" style="margin-bottom:10px;">
+  <span class="w3-block w3-center">Item1</span>
+  <span class="w3-block w3-center">Item2</span>
+</div>
+
+<!-- Schools Accordion -->
+<div class="w3-block w3-button" onclick="openAccordion('acc_schools')">
+  <h5>Schools <i class="fa fa-caret-down"></i></h5>
+</div>
+<div id="acc_schools" class="w3-hide w3-white w3-card-4" style="margin-bottom:10px;">
+  <span class="w3-block w3-center">Item1</span>
+  <span class="w3-block w3-center">Item2</span>
+</div>
+
+<!-- Grocery Stores Accordion -->
+<div class="w3-block w3-button" onclick="openAccordion('acc_gstores')">
+  <h5>Grocery Stores <i class="fa fa-caret-down"></i></h5>
+</div>
+<div id="acc_gstores" class="w3-hide w3-white w3-card-4" style="margin-bottom:10px;">
+  <span ng-repeat="gs in asset_gstores" class="w3-block w3-center">{{gs}}</span>
+</div>
+
+<!-- Historic Structures Accordion -->
+<div class="w3-block w3-button" onclick="openAccordion('acc_hist')">
+  <h5>Historic Structures <i class="fa fa-caret-down"></i></h5>
+</div>
+<div id="acc_hist" class="w3-hide w3-white w3-card-4" style="margin-bottom:10px;">
+  <span class="w3-block w3-center">Item1</span>
+  <span class="w3-block w3-center">Item2</span>
+</div>
+
+<!-- New Development Accordion -->
+<div class="w3-block w3-button" onclick="openAccordion('acc_new_dev')">
+  <h5>New Development <i class="fa fa-caret-down"></i></h5>
+</div>
+<div id="acc_new_dev" class="w3-hide w3-white w3-card-4" style="margin-bottom:10px;">
+  <span class="w3-block w3-center">Item1</span>
+  <span class="w3-block w3-center">Item2</span>
+</div>
+
+<!-- Planning Docs Accordion -->
+<div class="w3-block w3-button" onclick="openAccordion('acc_plan_docs')">
+  <h5>Planning Documents <i class="fa fa-caret-down"></i></h5>
+</div>
+<div id="acc_plan_docs" class="w3-hide w3-white w3-card-4" style="margin-bottom:10px;">
+  <span class="w3-block w3-center">Item1</span>
+  <span class="w3-block w3-center">Item2</span>
+</div>
+
+
+
